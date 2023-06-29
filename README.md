@@ -210,6 +210,32 @@ We can see our **loaded table model** and **rotate around** it with the mouse.
 
 _It currently displays the three different types of legs, we'll fix it when we'll add the **legs picker**._
 
+## Adjust camera and lighting
+
+Let's change the default camera position to have a better view of our table.
+
+In `App.jsx`:
+
+```jsx
+<Canvas shadows camera={{ position: [0, 3, 8], fov: 42 }}>
+```
+
+The lighting is too dark, we can change the `Environment` preset to `city` to have a better lighting:
+
+```jsx
+<Environment preset="city" />
+```
+
+You can also add the `background` prop to the `Environment` to preview the applied preset:
+
+```jsx
+<Environment preset="city" background />
+```
+
+![City preset](assets/city-preset.jpg)
+
+_Don't forget to remove it after..._
+
 ## Shadows
 
 To make our configurator more realistic, we'll add **shadows** to our scene.

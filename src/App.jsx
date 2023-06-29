@@ -1,17 +1,15 @@
 import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
-import { Interface } from "./components/Interface";
 
 function App() {
   return (
     <>
-      <Canvas shadows camera={{ position: [0, 3, 8], fov: 42 }}>
+      <Canvas shadows camera={{ position: [3, 3, 3], fov: 30 }}>
         <color attach="background" args={["#ececec"]} />
         <Experience />
-        <Environment preset="city" />
+        <Environment preset="sunset" />
       </Canvas>
-      <Interface />
     </>
   );
 }
