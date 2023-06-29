@@ -4,16 +4,21 @@ Command: npx gltfjsx@6.2.3 public/models/table.glb -o src/components/Table.jsx -
 */
 
 import { useGLTF } from "@react-three/drei";
-import React from "react";
+import React, { useEffect } from "react";
 import { useConfigurator } from "../hooks/useConfigurator";
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/models/table.glb");
-  const { legs } = useConfigurator();
+  const { legs, tableWidth, legsColor } = useConfigurator();
+
+  useEffect(() => {
+    materials.Metal.color.set(legsColor);
+  }, [legsColor]);
 
   return (
     <group {...props} dispose={null}>
       <mesh
+        scale={[tableWidth, 1, 1]}
         name="Plate"
         geometry={nodes.Plate.geometry}
         material={materials.Plate}
@@ -24,13 +29,13 @@ export function Model(props) {
             name="Legs01Left"
             geometry={nodes.Legs01Left.geometry}
             material={materials.Metal}
-            position={[-1.5, 0, 0]}
+            position={[-1.5 * tableWidth, 0, 0]}
           />
           <mesh
             name="Legs01Right"
             geometry={nodes.Legs01Right.geometry}
             material={materials.Metal}
-            position={[1.5, 0, 0]}
+            position={[1.5 * tableWidth, 0, 0]}
           />
         </>
       )}
@@ -40,13 +45,13 @@ export function Model(props) {
             name="Legs02Left"
             geometry={nodes.Legs02Left.geometry}
             material={materials.Metal}
-            position={[-1.5, 0, 0]}
+            position={[-1.5 * tableWidth, 0, 0]}
           />
           <mesh
             name="Legs02Right"
             geometry={nodes.Legs02Right.geometry}
             material={materials.Metal}
-            position={[1.5, 0, 0]}
+            position={[1.5 * tableWidth, 0, 0]}
           />
         </>
       )}
@@ -56,13 +61,13 @@ export function Model(props) {
             name="Legs03Left"
             geometry={nodes.Legs03Left.geometry}
             material={materials.Metal}
-            position={[-1.5, 0, 0]}
+            position={[-1.5 * tableWidth, 0, 0]}
           />
           <mesh
             name="Legs03Right"
             geometry={nodes.Legs03Right.geometry}
             material={materials.Metal}
-            position={[1.5, 0, 0]}
+            position={[1.5 * tableWidth, 0, 0]}
           />
         </>
       )}
