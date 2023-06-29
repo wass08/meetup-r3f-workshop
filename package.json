@@ -9,9 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@react-three/drei": "9.75.0",
     "@react-three/fiber": "8.13.3",
     "@types/three": "0.152.1",
+    "framer-motion": "^10.12.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "0.153.0"
