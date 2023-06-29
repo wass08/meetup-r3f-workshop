@@ -191,7 +191,17 @@ And it assigns the `geometry`, `material`, and `position` to each **mesh** it fo
 We can now import the `Model` component in our `Experience` component. Let's replace our cube with the table:
 
 ```jsx
+import { OrbitControls } from "@react-three/drei";
+import { Model } from "./Table";
 
+export const Experience = () => {
+  return (
+    <>
+      <OrbitControls />
+      <Model />
+    </>
+  );
+};
 ```
 
-<video source="/assets/table-loaded.mp4"></video>
+https://github.com/wass08/meetup-r3f-workshop/assets/6551176/da5b711b-a7fd-44d6-8109-796858399a6e
