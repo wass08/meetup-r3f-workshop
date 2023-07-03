@@ -1,32 +1,30 @@
-# Getting started with React Three Fiber
+# React Three Fiber で始める
 
-Hello, welcome to this meetup! Let's build together a simple 3D table configurator using React Three Fiber!
+React Three Fiber を使用して、シンプルな 3D テーブル設定ツールを一緒に作成しましょう！
 
-[🇯🇵 日本語の README はこちら](./README.ja.md)
+[🇬🇧 EN VERSION](README.md)
 
-## Project setup
+## プロジェクトのセットアップ
 
-To run this starter project simply run:
+このスタータープロジェクトを実行するには、次のコマンドを実行して依存関係をインストールします：
 
 ```bash
 yarn
 ```
 
-To install all the dependencies and then:
+その後、開発サーバーを起動するには以下のコマンドを実行します：
 
 ```bash
 yarn dev
 ```
 
-To start the development server.
+![スタータープロジェクト](/assets/starter-project.jpg)
 
-![starter-project](/assets/starter-project.jpg)
+_画面の中央に立方体が表示されるはずです。_
 
-_You should see a cube in the middle of the screen._
+## React Three Fiber の超簡単な紹介
 
-## Ultra quick introduction to React Three Fiber
-
-The following code in the `src/components/Experience.jsx` is responsible for rendering the cube:
+以下のコードは `src/components/Experience.jsx` ファイル内で立方体をレンダリングしています：
 
 ```jsx
 <mesh>
@@ -35,24 +33,24 @@ The following code in the `src/components/Experience.jsx` is responsible for ren
 </mesh>
 ```
 
-In _3D_ world, a mesh is an object that is made up of a **Geometry** and a **Material**.
+_3D_ の世界では、メッシュは **ジオメトリ** と **マテリアル** から構成されるオブジェクトです。
 
-- A **Geometry** is the shape of the object, in this case a cube. It can be a sphere, a plane, a cylinder, etc.
-- A **Material** is like clothing for the object and it defines how the object looks like (color, metallic, roughness, etc.) in this case a simple material that shows a **white color**.
+- **ジオメトリ** はオブジェクトの形状を表します。この場合は立方体ですが、球体、平面、円柱などがあります。
+- **マテリアル** はオブジェクトの外見を定義します（色、金属質、粗さなど）。この場合は単純なマテリアルで **白色** を表示します。
 
-### Axes, Position, rotation and scale
+### 座標軸、位置、回転、スケール
 
-In a 3D space, there are three axes: `x`, `y`, and `z`. Each axis is a line that extends infinitely in both directions.
+3D 空間では、`x`、`y`、`z` の 3 つの座標軸があります。それぞれの軸は、両方向に無限に延びる線です。
 
-![3D axes](/assets/axes.jpg)
+![3D座標軸](/assets/axes.jpg)
 
-With **Three.js** the axes are defined as follows:
+**Three.js**では、座標軸は次のように定義されます：
 
-- `x`: points to the right
-- `y`: points up
-- `z`: points towards the viewer
+- `x`：右を指します。
+- `y`：上を指します。
+- `z`：視聴者の方を指します。
 
-We can move the cube around by changing its position. It takes an array of three values: `[x, y, z]`:
+位置を変更することで、立方体を移動させることができます。位置は `[x, y, z]` の配列で指定します：
 
 ```jsx
 <mesh position={[5, 0, 0]}>
@@ -61,9 +59,9 @@ We can move the cube around by changing its position. It takes an array of three
 </mesh>
 ```
 
-We can also rotate the cube by changing its rotation.
+回転も同様に行うことができます。
 
-The `rotation` values are in radians. To convert degrees to radians, you can use the `THREE.MathUtils.degToRad()` method:
+`rotation` の値はラジアンで指定されます。度数からラジアンに変換するには、`THREE.MathUtils.degToRad()` メソッドを使用します：
 
 ```jsx
 import { OrbitControls } from "@react-three/drei";
@@ -86,7 +84,7 @@ export const Experience = () => {
 };
 ```
 
-We can also scale the cube by changing its scale:
+キューブのスケールを変更することで、キューブのサイズを変更することもできます:
 
 ```jsx
 <mesh
@@ -99,31 +97,31 @@ We can also scale the cube by changing its scale:
 </mesh>
 ```
 
-This is the quickest possible introduction to React Three Fiber, don't worry if you're lost! We'll go through everything together through this hands-on workshop.
+これは React Three Fiber の最も簡単な紹介です。迷子になっても心配しないでください！このハンズオンワークショップを通じて、一緒にすべてを学んでいきます。
 
-## Loading the table model
+## テーブルモデルの読み込み
 
-We'll use a **3D model of a table** that we'll load into our scene.
+シーンに読み込むための**3D テーブルモデル**を使用します。
 
-The `table.glb` model is available in the `public/models` folder.
+`table.glb` モデルは `public/models` フォルダに用意されています。
 
-Instead of coding it from scratch, we'll use a **command line tool** called [gltfjsx](https://github.com/pmndrs/gltfjsx) made by the creator of React Three Fiber.
+ゼロからコーディングする代わりに、React Three Fiber の作者によって作成された **コマンドラインツール** [gltfjsx](https://github.com/pmndrs/gltfjsx) を使用します。
 
-It will generate the code for us to load the model into our scene:
+これにより、モデルをシーンに読み込むためのコードが生成されます：
 
 ```bash
 npx gltfjsx public/models/table.glb -o src/components/Table.jsx -k -r public
 ```
 
-We use `npx` to run `gltfjsx` without installing it globally.
+`npx` を使用してグローバルにインストールせずに `gltfjsx` を実行します。
 
-The `-o` flag is used to specify the output file, in this case `src/components/Table.jsx`.
+`-o` フラグは出力ファイルを指定するために使用されます。この場合は `src/components/Table.jsx` です。
 
-The `-k` flag is used to keep the name on the **meshes**.
+`-k` フラグは **メッシュ** の名前を保持するために使用されます。
 
-The `-r` flag is used to specify the **root** folder of the model, in this case `public`.
+`-r` フラグはモデルの **ルート** フォルダを指定するために使用されます。この場合は `public` です。
 
-The generated code looks like this:
+生成されたコードは次のようになります：
 
 ```jsx
 /*
@@ -186,11 +184,11 @@ export function Model(props) {
 useGLTF.preload("/models/table.glb");
 ```
 
-It uses the `useGLTF` hook from the [React Three Drei library](https://github.com/pmndrs/drei) to load the model.
+次に、モデルを読み込むために[React Three Drei ライブラリ](https://github.com/pmndrs/drei)から`useGLTF`フックを使用します。
 
-And it assigns the `geometry`, `material`, and `position` to each **mesh** it found in the model.
+そして、モデル内の各**メッシュ**に対して、`geometry`、`material`、および`position`を割り当てます。
 
-We can now import the `Model` component in our `Experience` component. Let's replace our cube with the table:
+`Model`コンポーネントを`Experience`コンポーネントにインポートすることができます。さあ、キューブをテーブルに置き換えましょう:
 
 ```jsx
 import { OrbitControls } from "@react-three/drei";
@@ -208,27 +206,27 @@ export const Experience = () => {
 
 https://github.com/wass08/meetup-r3f-workshop/assets/6551176/da5b711b-a7fd-44d6-8109-796858399a6e
 
-We can see our **loaded table model** and **rotate around** it with the mouse.
+マウスで**ロードされたテーブルモデル**を回転させながら表示することができます。
 
-_It currently displays the three different types of legs, we'll fix it when we'll add the **legs picker**._
+_現在、異なるタイプの脚が表示されていますが、**脚の選択機能**を追加する際に修正します。_
 
-## Adjust camera and lighting
+## カメラと照明の調整
 
-Let's change the default camera position to have a better view of our table.
+デフォルトのカメラの位置を変更して、テーブルをより良く見ることができるようにしましょう。
 
-In `App.jsx`:
+`App.jsx`内で以下のように変更します:
 
 ```jsx
 <Canvas shadows camera={{ position: [0, 3, 8], fov: 42 }}>
 ```
 
-The lighting is too dark, we can change the `Environment` preset to `city` to have a better lighting:
+照明が暗すぎます。より良い照明を得るために、Environment プリセットを city に変更できます:
 
 ```jsx
 <Environment preset="city" />
 ```
 
-You can also add the `background` prop to the `Environment` to preview the applied preset:
+`Environment`に`background`プロップを追加することで、適用されたプリセットをプレビューすることもできます:
 
 ```jsx
 <Environment preset="city" background />
@@ -236,13 +234,13 @@ You can also add the `background` prop to the `Environment` to preview the appli
 
 ![City preset](assets/city-preset.jpg)
 
-_Don't forget to remove it after..._
+_忘れずに、使用後にそれを削除することを忘れないでください..._
 
-## Shadows
+## 影
 
-To make our configurator more realistic, we'll add **shadows** to our scene.
+よりリアルな設定をするために、シーンに影を追加します。
 
-We will use the `ContactShadows` component from the [React Three Drei library](https://github.com/pmndrs/drei#contactshadows):
+[React Three Drei ライブラリ](https://github.com/pmndrs/drei#contactshadows)の`ContactShadows`コンポーネントを使用します。:
 
 ```jsx
 import { ContactShadows, OrbitControls } from "@react-three/drei";
@@ -261,9 +259,9 @@ export const Experience = () => {
 
 ![Table with strong shadow](assets/contact-shadows-default.jpg)
 
-It works, but the shadow is too harsh!
+うまく機能していますが、影が厳しすぎます！
 
-We can change the `blur` and `opacity` props to make it look better:
+`blur`プロパティと`opacity`プロパティを変更して、より良い見た目に調整できます。:
 
 ```jsx
 <ContactShadows position={[0, -1, 0]} blur={3} opacity={0.42} />
@@ -271,15 +269,15 @@ We can change the `blur` and `opacity` props to make it look better:
 
 ![Table with soft shadow](assets/contact-shadows-softer.jpg)
 
-Looks better!
+見た目が良くなりました！
 
 ## useConfigurator
 
-We'll create a **custom hook** to get and set the **table configuration** from anywhere in our app.
+アプリ内のどの場所からでも**テーブルの設定**を取得および更新するための**カスタムフック**を作成します。
 
-We will use the [useContext](https://react.dev/reference/react/useContext) hook from React to create a **context** that will be available to all the components in our app and the [useState](https://react.dev/reference/react/useState) hook to store the **table configuration**.
+私たちは、React の[useContext](https://react.dev/reference/react/useContext)フックを使用して、アプリ内のすべてのコンポーネントで利用可能な**コンテキスト**を作成し、[useState](https://react.dev/reference/react/useState)フックを使用して**テーブルの設定**を保存します。
 
-Create a new folder `src/hooks` and a new file `useConfigurator.jsx`:
+`src/hooks`ディレクトリと`useConfigurator.jsx`という新しいファイルを作成してください。:
 
 ```jsx
 import { createContext, useContext, useState } from "react";
@@ -307,11 +305,11 @@ export const useConfigurator = () => {
 };
 ```
 
-We created a `ConfiguratorContext` with the `createContext` function, and a `ConfiguratorProvider` component that will wrap our app and make the **table configuration** available to all the components.
+`createContext`関数を使って`ConfiguratorContext`を作成し、`ConfiguratorProvider`コンポーネントを作成しました。このコンポーネントはアプリ全体をラップし、**テーブルの設定**をすべてのコンポーネントで利用できるようにします。
 
-We also created a `useConfigurator` hook that will be used to get and set the **table configuration**.
+また、**テーブルの設定**を取得および設定するために使用される`useConfigurator`フックも作成しました。
 
-We can now wrap our app with the `ConfiguratorProvider` component in `src/index.jsx`:
+`src/index.jsx`でアプリを`ConfiguratorProvider`コンポーネントでラップすることができます。:
 
 ```jsx
 import React from "react";
@@ -329,7 +327,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-Let's use the `useConfigurator` hook in our `Table` component to get the **table configuration**:
+`Table`コンポーネントで`useConfigurator`フックを使用して、**テーブルの設定**を取得しましょう。:
 
 ```jsx
 import { useGLTF } from "@react-three/drei";
@@ -352,9 +350,9 @@ export function Model(props) {
 
 ![Console log of the legs configuration](assets/console-log-legs.jpg)
 
-We can see in the console that the current selected **legs** are `1`.
+コンソールに表示されているように、現在選択されている**脚**は`1`です。
 
-We can now use the `legs` variable to display the correct **legs** in our `Model` component:
+`legs`変数を使用して、`Model`コンポーネントで正しい**脚**を表示することができます:
 
 ```jsx
 /*
@@ -434,9 +432,9 @@ useGLTF.preload("/models/table.glb");
 
 ![Table with legs set 1](assets/table-legs-1.jpg)
 
-Now our table only displays one set of legs.
+現在、テーブルは 1 つの脚のセットのみを表示しています。
 
-We can update manually the `legs` variable in the `useConfigurator` hook to see the other sets of legs:
+他の脚のセットを表示するには、`useConfigurator`フック内の`legs`変数を手動で更新することができます。:
 
 ```jsx
 const [legs, setLegs] = useState(2);
@@ -444,21 +442,21 @@ const [legs, setLegs] = useState(2);
 
 ![Table with legs set 2](assets/table-legs-2.jpg)
 
-We have the second set of legs displayed!
+2 番目の脚のセットが表示されました！
 
 ## HTML UI
 
-We'll create a **HTML UI** to display the **table configuration** and allow the user to change it.
+**HTML UI**を作成して、**テーブルの設定**を表示し、ユーザーが変更できるようにします。
 
-I chose to use [Chakra UI](https://chakra-ui.com/getting-started) but you can use any **CSS Framework** you want or go with **plain CSS**.
+私は[Chakra UI](https://chakra-ui.com/getting-started)を使用することにしましたが、好きな**CSS フレームワーク**を使用するか、**プレーンな CSS**で進めることもできます。
 
-Install Chakra UI:
+Chakra UI をインストールしてください:
 
 ```bash
 yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
-Wrap the `App` component with the `ChakraProvider` component in `src/index.jsx`:
+`src/index.jsx`ファイルで`App`コンポーネントを`ChakraProvider`コンポーネントでラップします:
 
 ```jsx
 import { ChakraProvider } from "@chakra-ui/react";
@@ -479,7 +477,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-We can now create our `Interface` in the `src/components/Interface.jsx` file:
+`src/components/Interface.jsx`ファイルに`Interface`コンポーネントを作成できます:
 
 ```jsx
 import { Box, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
@@ -521,15 +519,15 @@ export const Interface = () => {
 };
 ```
 
-The only interesting part here is the:
+ここで興味深い部分は以下の部分です:
 
 ```jsx
 const { legs, setLegs } = useConfigurator();
 ```
 
-That allows us to get the **table configuration** and update it.
+これにより、私たちは**テーブルの設定**を取得し、更新することができます。
 
-We also need to import the `Interface` component in the `src/App.jsx` file. We can put it anywhere outside the `Canvas` component. We will add it next to it:
+また、`Interface`コンポーネントを`src/App.jsx`ファイルにインポートする必要があります。`Canvas`コンポーネントの外側のどこにでも配置することができます。次にそれを追加します:
 
 ```jsx
 import { Environment } from "@react-three/drei";
@@ -555,13 +553,13 @@ export default App;
 
 https://github.com/wass08/meetup-r3f-workshop/assets/6551176/9cbae865-c3bd-4977-8409-5ac3e0945ebf
 
-We now have an **HTML UI** to display the **table configuration** and allow the user to change it.
+これで、**テーブルの設定**を表示し、ユーザーがそれを変更できる**HTML UI**ができました。
 
-## Table width
+## テーブルの幅
 
-We'll now add a **slider** to allow the user to change the **table width**.
+次に、ユーザーが**テーブルの幅**を変更できるように、**スライダー**を追加します。
 
-First, let's add a `tableWidth` variable in the `useConfigurator` hook:
+まず、`useConfigurator`フックに`tableWidth`変数を追加しましょう:
 
 ```jsx
 // ...
@@ -582,7 +580,7 @@ export const ConfiguratorProvider = ({ children }) => {
 // ...
 ```
 
-In the `Interface` component, we can now add a `Slider` component:
+`Interface`コンポーネントでは、`Slider`コンポーネントを追加することができます:
 
 ```jsx
 import {
@@ -656,9 +654,9 @@ export const Interface = () => {
 };
 ```
 
-As the `tableWidth` will impact the **scale of the table**, we allow the slider to go from `0.5` to `2` with a `step` of `0.001`.
+`tableWidth`はテーブルの**スケール**に影響を与えるため、スライダーの範囲を`0.5`から`2`までの間で`0.001`のステップで調整できるようにします。
 
-Now, in the `Table` component, we can use the `tableWidth` to scale the table plate and also position the table legs:
+そして、`Table`コンポーネントでは、`tableWidth`を使用してテーブルのプレートのスケールを調整し、テーブルの脚の位置も調整します:
 
 ```jsx
 /*
@@ -739,13 +737,13 @@ useGLTF.preload("/models/table.glb");
 
 https://github.com/wass08/meetup-r3f-workshop/assets/6551176/486d764a-0daa-455d-8534-6bfba1fc2501
 
-We can now change the **table width** and see the **table plate** and **legs** change accordingly! 🎉
+これで、**テーブルの幅**を変更し、それに応じて**テーブルのプレート**と**脚**が変わるのを確認できます！🎉
 
-## Legs color
+## 脚の色
 
-We'll add a last option to allow the user to change the **legs color**.
+最後に、ユーザーが**脚の色**を変更できるようにするオプションを追加します。
 
-First, let's add a `legsColor` variable in the `useConfigurator` hook:
+まず、`useConfigurator`フックに`legsColor`変数を追加しましょう:
 
 ```jsx
 import { createContext, useContext, useState } from "react";
@@ -784,7 +782,7 @@ export const useConfigurator = () => {
 };
 ```
 
-Then, in our `Interface` let's add some controls to change the `legsColor`:
+次に、`Interface`コンポーネントに`legsColor`を変更するためのいくつかのコントロールを追加しましょう:
 
 ```jsx
 import {
@@ -877,9 +875,9 @@ export const Interface = () => {
 };
 ```
 
-I used `CSS color names` but you can use `Hexadecimal` or `RGB` values as well.
+`CSSのカラー名`を使用しましたが、`16進数`や`RGB`の値を使用することもできます。
 
-Time to apply the color to the legs! 🎨
+それでは、色を脚に適用してみましょう！ 🎨
 
 ```jsx
 //...
@@ -904,30 +902,30 @@ export function Model(props) {
 // ...
 ```
 
-`useEffect` is a React hook that allows us to run some code when a variable changes. In our case, we want to change the color of the legs when the `legsColor` variable changes.
+`useEffect`は、React のフックであり、変数が変更されたときにコードを実行することができます。私たちの場合、`legsColor`変数が変更されたときに脚の色を変えたいと思っています。
 
-The legs material is called `Metal` and we can change its color by using the `set` method on the `color` property.
+脚のマテリアルは「Metal」と呼ばれ、`color`プロパティの`set`メソッドを使用して色を変更することができます。
 
 https://github.com/wass08/meetup-r3f-workshop/assets/6551176/a560ed77-e4c1-4a61-a942-e4ce5a458adb
 
-The color is now changing! 🎉
+おめでとうございます！色が変わるようになりました！ 🎉
 
-## Conclusion
+## 結論
 
-We've now built a configurator that allows us to change the **table width**, the **legs** and the **legs color**!
+私たちは今、**テーブルの幅**、**脚**、**脚の色**を変更できる設定ツールを作りました！
 
-Here are some ideas to **go further** on this project:
+このプロジェクトをさらに進めるためのアイデアをいくつか紹介します:
 
-- Add **more options** to change the **table plate color**, the **table plate material**, the **legs material**, etc.
-- **Save the table configuration** in the browser's local storage
-- Add a button to **download a photo of the table**
-- Make the **interface responsive**
-- **Animate the camera** to show the table from different angles
-- **Lerp the table width** to its new configuration instead of changing it instantly
-- **Scale the table plate texture** to match the table width (and avoid stretching)
+- **テーブルの板の色**、**テーブルの板の素材**、**脚の素材**など、**さらに多くのオプション**を追加する
+- ブラウザのローカルストレージにテーブルの設定を**保存**する
+- テーブルの写真を**ダウンロードするボタン**を追加する
+- **レスポンシブなインターフェース**を作成する
+- テーブルをさまざまな角度から表示するために、カメラを**アニメーション化**する
+- テーブルの幅を瞬時に変更する代わりに、新しい構成に対してテーブルの幅を**滑らかに変化**させる
+- テーブルの幅に合わせて（伸び縮みを防ぐために）テーブルの板のテクスチャを**スケーリング**する
 
-## Resources
+## リソース
 
 - [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
-- [Drei Library](https://github.com/pmndrs/drei): Useful components for React Three Fiber
-- [Wawa Sensei](https://www.youtube.com/%2540WawaSensei): an amazing YouTube channel about Three.js and React Three Fiber 🤭
+- [Drei ライブラリ](https://github.com/pmndrs/drei): React Three Fiber 用の便利なコンポーネント
+- [Wawa Sensei](https://www.youtube.com/%2540WawaSensei): Three.js や React Three Fiber についての素晴らしい YouTube チャンネル 🤭
