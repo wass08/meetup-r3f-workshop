@@ -4,6 +4,8 @@ Hello, welcome to this meetup! Let's build together a simple 3D table configurat
 
 [🇯🇵 日本語の README はこちら](./README.ja.md)
 
+Let's use the `#r3fTokyoMeetup` hashtag on Twitter to share our progress and photos of the event! You can also mention me [@wawasensei](https://twitter.com/wawasensei).
+
 ## Project setup
 
 To run this starter project simply run:

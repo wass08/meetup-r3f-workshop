@@ -4,6 +4,8 @@ React Three Fiber を使用して、シンプルな 3D テーブル設定ツー�
 
 [🇬🇧 EN VERSION](README.md)
 
+以下のように Twitter で `#r3fTokyoMeetup` ハッシュタグを使用して、進行状況やイベントの写真を共有しましょう！また、私のことをメンションしても構いません [@wawasensei](https://twitter.com/wawasensei)。
+
 ## プロジェクトのセットアップ
 
 このスタータープロジェクトを実行するには、次のコマンドを実行して依存関係をインストールします：
