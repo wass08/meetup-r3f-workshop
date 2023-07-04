@@ -11,6 +11,8 @@ Let's use the `#Tokyo3DWeb` hashtag on Twitter to share our progress and photos 
 _Grab the repo URL by scanning the QRCode above or type it manually:
 `https://github.com/wass08/meetup-r3f-workshop`_
 
+The final source code is also [available here](https://github.com/wass08/meetup-r3f-workshop-final) _(perfect if you only want to work on the HTML/CSS interface)_
+
 ## Project setup
 
 To run this starter project simply run:

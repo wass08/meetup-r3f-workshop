@@ -6,6 +6,8 @@ React Three Fiber を使用して、シンプルな 3D テーブル設定ツー�
 
 以下のように Twitter で `#Tokyo3DWeb` ハッシュタグを使用して、進行状況やイベントの写真を共有しましょう！また、私のことをメンションしても構いません [@wawasensei](https://twitter.com/wawasensei)。
 
+最終的なソースコードは[こちら](https://github.com/wass08/meetup-r3f-workshop-final)でも入手できます（HTML/CSS のインターフェースのみを作業したい場合に最適です）。
+
 ## プロジェクトのセットアップ
 
 このスタータープロジェクトを実行するには、次のコマンドを実行して依存関係をインストールします：
