@@ -6,7 +6,7 @@ Hello, welcome to this meetup! Let's build together a simple 3D table configurat
 
 Let's use the `#Tokyo3DWeb` hashtag on Twitter to share our progress and photos of the event! You can also mention me [@wawasensei](https://twitter.com/wawasensei).
 
-![QRCode](assets/qr.jpg)
+<img src="assets/qr.jpg" alt="QRCode" width="300">
 
 _Grab the repo URL by scanning the QRCode above or type it manually:
 `https://github.com/wass08/meetup-r3f-workshop`_
