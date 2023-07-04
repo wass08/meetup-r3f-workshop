@@ -4,7 +4,12 @@ Hello, welcome to this meetup! Let's build together a simple 3D table configurat
 
 [🇯🇵 日本語の README はこちら](./README.ja.md)
 
-Let's use the `#r3fTokyoMeetup` hashtag on Twitter to share our progress and photos of the event! You can also mention me [@wawasensei](https://twitter.com/wawasensei).
+Let's use the `#Tokyo3DWeb` hashtag on Twitter to share our progress and photos of the event! You can also mention me [@wawasensei](https://twitter.com/wawasensei).
+
+![QRCode](assets/qr.jpg)
+
+_Grab the repo URL by scanning the QRCode above or type it manually:
+`https://github.com/wass08/meetup-r3f-workshop`_
 
 ## Project setup
 
